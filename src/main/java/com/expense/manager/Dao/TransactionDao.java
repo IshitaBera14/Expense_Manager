@@ -28,7 +28,7 @@ public interface TransactionDao extends JpaRepository<Transactions,Integer> {
     List<Transactions> getAmountGreaterThan(@Param("amount") Integer a);
 
 
-    @Query(value = "SELECT t FROM Transactions t WHERE t.date BETWEEN :startDate AND :endDate",nativeQuery = true)
+    @Query("SELECT t FROM Transactions t WHERE t.date BETWEEN :startDate AND :endDate")
     List<Transactions> findAllByDateRange(@Param("startDate") String startDate, @Param("endDate") String endDate);
 
 
@@ -36,8 +36,14 @@ public interface TransactionDao extends JpaRepository<Transactions,Integer> {
     List<String> getAllNotes();
 
 
-    @Query(value = "SELECT t.amount FROM Transactions t WHERE t.category.categoryName = :a",nativeQuery = true)        // trasaction class in andar mapping kariyu che cagetory id nu aetale cateory j lakhavu pade
-    List<Integer> getByCategoryName(String a);                                            // The colon : is used to denote a named parameter in a JPQL
+     @Query( "SELECT t.amount FROM Transactions t WHERE t.category.categoryName = :a")
+     List<Integer> getByCategoryName(@Param("a") String a);
+
+    // trasaction class in andar mapping kariyu che cagetory id nu aetale cateory j lakhavu pade
+    // The colon : is used to denote a named parameter in a JPQL
+
+
+
 
 
     @Query(value = "SELECT t.paymentMethod.paymentMethod FROM Transactions t WHERE t.category.categoryName = :s",nativeQuery = true)
@@ -47,7 +53,7 @@ public interface TransactionDao extends JpaRepository<Transactions,Integer> {
     @Query(value = "SELECT amount FROM Transactions WHERE category.id = :x",nativeQuery = true)
     List<Integer> getByCategoryId(Integer x);
 
-    @Query(value = "SELECT SUM(amount) FROM Transactions WHERE user.name = :a ",nativeQuery = true)
+    @Query( "SELECT SUM(amount) FROM Transactions WHERE user.name = :a ")
     List<Integer> getTotalAmountByUser(String a);
 
 

@@ -50,7 +50,7 @@ public class Cron
         }
     }
 
-    @Scheduled(cron = "0 07 9 * * *")
+    @Scheduled(cron = "0 35 19 * * *")
     public void sendDailyEmailsToUserOfTheirTotalSpendWithCategory()
     {
 
@@ -77,7 +77,7 @@ public class Cron
         }
     }
 
-    @Scheduled(cron = "0 47 10 * * *")
+    @Scheduled(cron = "0 36 19 * * *")
     public void sendEmailToThoseWhoHasTransactionOnPreviousDay()
     {
         LocalDate previousDate =LocalDate.now().minusDays(1);

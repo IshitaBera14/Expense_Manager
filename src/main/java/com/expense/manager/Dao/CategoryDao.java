@@ -14,6 +14,4 @@ public interface CategoryDao extends JpaRepository<Categories,Integer> {
     List<Integer> getByCategoryName2(String a);
 
 
-
-
 }

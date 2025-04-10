@@ -13,10 +13,9 @@ import java.util.List;
 public class TransactionController
 {
     @Autowired
-    TransactionService transactionService;                              // Type Declaration && variable name
+    TransactionService transactionService ;                              // Type Declaration && variable name
 
-                                                                         /*  @GetMapping ("/show")
-                                                                             public String addQuestion(){ return "ABC1"; }*/
+                                                                         /*  @GetMapping ("/show                                                                        public String addQuestion(){ return "ABC1"; }*/
     @PostMapping("/addNewData")
     public Transactions addNewData(@RequestBody Transactions transactions)
     {
@@ -78,6 +77,7 @@ public class TransactionController
     @GetMapping("/getByCategory")
     public List<Integer> getAmountCategories2(@RequestParam("category") String a)
     {
+
         return transactionService.getAmountCategory2(a);
     }
 
